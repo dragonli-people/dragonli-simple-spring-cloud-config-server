@@ -1,0 +1,31 @@
+# config server port:
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: ${ENV:${PROFILES:native}}
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: ${SERVER_ENCRYPT_ENABLED:false}
+
+#encrypt:
+  # encrypted key from env or using default:
+  #key: ${SPRING_ENCRYPT_KEY:SecretKey4CryptoExchange}
+
+---
+
+# native configuration:
+
+spring:
+  profiles: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:./config-files, file:../config-files, file:/config-files, file:/etc/config-files
+
