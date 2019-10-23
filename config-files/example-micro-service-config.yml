@@ -3,7 +3,7 @@ data-source-configs:
   fir-datasource:
     type: com.zaxxer.hikari.HikariDataSource
     data-config:
-      jdbc-url: jdbc:mysql://192.168.7.104:3306/firchat_fir?useSSL=false&characterEncoding=utf8
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/firchat_fir?useSSL=false&characterEncoding=utf8
       username: root
       password: 123456
       driver-class-name: com.mysql.jdbc.Driver
@@ -22,9 +22,9 @@ service:
       mode: single
       # Redis节点地址列表:
       nodes:
-        - redis://192.168.7.106:6379
+        - redis://127.0.0.1:6379
     lock-zookeeper-config:
-      zookeeperAddr: 192.168.7.101:2181
+      zookeeperAddr: 127.0.0.1:2181
       zkpTimeout: 10000
     db-config:
       redisKey: ${REDIS_KEY:}
@@ -45,7 +45,7 @@ service:
       scan: org.dragonli.service.general.other.OtherService
       group: ${MICRO_SERVICE_GROUP:}
       http-port: ${MICRO_SERVICE_HTTP_PORT:7094}
-      zookeeper-address: 192.168.7.101:2181
+      zookeeper-address: 127.0.0.1:2181
       zookeeper-timeout: 3000
       zookeeper-base-key: /service/datas/lock/base
       lock-timeout: 1000
@@ -57,7 +57,7 @@ service:
       http-port: ${MICRO_SERVICE_HTTP_PORT:7096}
       group: ${MICRO_SERVICE_GROUP:}
       onlinePrefix: ${NETTY_ONLINE_ZOOKEEPER_PATH_PREFIX:/service/datas/websocket/online:}
-      configsStr: ${NETTY_CONFIG_STR:192.168.7.101:8101;ws://192.168.7.101:8101}
+      configsStr: ${NETTY_CONFIG_STR:127.0.0.1:8101;ws://websocket-dev-address:8101}
       redisonlineKey: /service/datas/websocket/online
       privatekey: ${CONFIG_PRIVATE_KEY:draonli@2019}
     simple-db-service:
