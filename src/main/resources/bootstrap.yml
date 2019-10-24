@@ -4,28 +4,13 @@ server:
 
 spring:
   application:
-    name: config-server
+    name: configserver
   profiles:
-    active: ${ENV:${PROFILES:config}}
+    active: composite
   cloud:
     config:
       server:
-        encrypt:
-          enabled: ${SERVER_ENCRYPT_ENABLED:false}
-
-#encrypt:
-  # encrypted key from env or using default:
-  #key: ${SPRING_ENCRYPT_KEY:SecretKey4CryptoExchange}
-
----
-
-# config configuration:
-
-spring:
-  profiles: config
-  cloud:
-    config:
-      server:
-        config:
-          search-locations: file:./config-files, file:../config-files, file:/config-files, file:${CONFIG_FILE_PATH:/etc/config-files}
-
+        composite:
+          - type: native
+            search-locations: /java-service/config/config-files
+        bootstrap: true
