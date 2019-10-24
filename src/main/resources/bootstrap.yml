@@ -6,7 +6,7 @@ spring:
   application:
     name: config-server
   profiles:
-    active: ${ENV:${PROFILES:native}}
+    active: ${ENV:${PROFILES:config}}
   cloud:
     config:
       server:
@@ -22,7 +22,7 @@ spring:
 # native configuration:
 
 spring:
-  profiles: native
+  profiles: config
   cloud:
     config:
       server:
