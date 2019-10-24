@@ -19,13 +19,13 @@ spring:
 
 ---
 
-# native configuration:
+# config configuration:
 
 spring:
   profiles: config
   cloud:
     config:
       server:
-        native:
+        config:
           search-locations: file:./config-files, file:../config-files, file:/config-files, file:${CONFIG_FILE_PATH:/etc/config-files}
 
