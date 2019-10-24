@@ -27,5 +27,5 @@ spring:
     config:
       server:
         native:
-          search-locations: file:./config-files, file:../config-files, file:/config-files, file:/etc/config-files
+          search-locations: file:./config-files, file:../config-files, file:/config-files, file:${CONFIG_FILE_PATH:/etc/config-files}
 
