@@ -4,13 +4,16 @@ server:
 
 spring:
   application:
-    name: configserver
+    name: ${APP_NAME:service-config}
   profiles:
-    active: composite
+    active: ${EVN:composite}
   cloud:
     config:
       server:
         composite:
           - type: native
-            search-locations: /java-service/config/config-files
+            search-locations: ${CONFIG_FILE_PATH:/java-service/config/config-files}
+        dev:
+          - type: native
+            search-locations: ${CONFIG_FILE_PATH:/java-service/config/config-files}
         bootstrap: true
